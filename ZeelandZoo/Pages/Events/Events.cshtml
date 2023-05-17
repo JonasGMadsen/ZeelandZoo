@@ -1,0 +1,40 @@
+﻿@page
+@model ZeelandZoo.Pages.Events.GetAllEventsModel
+@{
+}
+<h1>Events</h1>
+
+<table class="table table-bordered table-hover table-striped">
+	<thead>
+		<tr>
+			<th>
+				Event_Titler
+			</th>
+			<th>
+				Dato
+			</th>
+			<th>
+				Antal_Personer
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Events != null)
+		{
+			foreach (var butikker in Model.Events)
+			{
+				<tr>
+					<td>
+						@butikker.Event_Titler
+					</td>
+					<td>
+						@butikker.Dato
+					</td>
+					<td>
+						@butikker.Antal_Personer
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
