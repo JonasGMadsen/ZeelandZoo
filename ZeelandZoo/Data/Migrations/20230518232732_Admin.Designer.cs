@@ -12,8 +12,8 @@ using ZeelandZoo.Data;
 namespace ZeelandZoo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230518204846_Name")]
-    partial class Name
+    [Migration("20230518232732_Admin")]
+    partial class Admin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -182,11 +182,13 @@ namespace ZeelandZoo.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
