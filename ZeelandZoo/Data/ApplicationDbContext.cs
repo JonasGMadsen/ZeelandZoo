@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ZeelandZoo.Models;
 
 namespace ZeelandZoo.Data
 {
@@ -10,6 +11,8 @@ namespace ZeelandZoo.Data
             : base(options)
         {
         }
+        public DbSet<ZeelandZoo.Models.Events>? Events { get; set; }
+        public DbSet<ZeelandZoo.Models.News>? News { get; set; }
 
     }
 
