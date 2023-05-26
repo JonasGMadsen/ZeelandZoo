@@ -12,8 +12,7 @@ using ZeelandZoo.Models;
 
 namespace ZeelandZoo.Pages.NewsCRUD
 {
-    [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    
     public class IndexModel : PageModel
     {
         private readonly ZeelandZoo.Data.ApplicationDbContext _context;

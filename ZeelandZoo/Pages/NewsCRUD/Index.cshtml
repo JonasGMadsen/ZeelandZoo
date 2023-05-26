@@ -1,6 +1,11 @@
 ﻿@page
 @model ZeelandZoo.Pages.NewsCRUD.IndexModel
 
+@using Microsoft.AspNetCore.Identity
+@using ZeelandZoo.Data
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -43,11 +48,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NewsDate)
             </td>
+                @if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "Admin"))
+                {
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+                    </td>
+                } else
+                {
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>                   
+                    </td>
+                }
         </tr>
 }
     </tbody>
