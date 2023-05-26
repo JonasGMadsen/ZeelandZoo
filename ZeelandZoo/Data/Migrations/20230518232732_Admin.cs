@@ -18,7 +18,7 @@ namespace ZeelandZoo.Data.Migrations
             var passwordHash = hasher.HashPassword(null, "Password"); //Dårlig ide at lade et password stå åbent sådan her btw, så TODO: Skjul password.
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("INSERT INTO AspNetUsers(Id, UserName, NormalizedUserName, Email, EmailConfirmed, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEnabled, AccessFailedCount, NormalizedEmail, PasswordHash, SecurityStamp, FirstName, LastName)");
+            sb.AppendLine("INSERT INTO AspNetUsers(Id, UserName, NormalizedUserName, Email, EmailConfirmed, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEnabled, AccessFailedCount, NormalizedEmail, PasswordHash, SecurityStamp)");
             sb.AppendLine("VALUES(");
             sb.AppendLine($"'{ADMIN_USER_GUID}'");
             sb.AppendLine(", 'admin@edu.zealand.dk'");
@@ -32,8 +32,6 @@ namespace ZeelandZoo.Data.Migrations
             sb.AppendLine(", 'ADMIN@EDU.ZEALAND.DK'");
             sb.AppendLine($", '{passwordHash}'");
             sb.AppendLine(", ''");
-            sb.AppendLine(", 'John'");
-            sb.AppendLine(", 'Admin'");
             sb.AppendLine(")");
 
             migrationBuilder.Sql(sb.ToString());
