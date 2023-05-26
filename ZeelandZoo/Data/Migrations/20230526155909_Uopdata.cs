@@ -9,13 +9,6 @@ namespace ZeelandZoo.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "FirstName",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "LastName",
-                table: "AspNetUsers");
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
