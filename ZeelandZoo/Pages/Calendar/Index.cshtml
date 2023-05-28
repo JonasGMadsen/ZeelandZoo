@@ -1,0 +1,51 @@
+﻿@page
+@model ZeelandZoo.Pages.Calendar.IndexModel
+@{
+}
+
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {               
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+        @foreach (var evt in Model.Events)
+        {
+            <text>{
+                            id: '@evt.Id',
+                            title: '@evt.Name',
+                            start: '@String.Format("{0:yyyy-MM-ddTHH:mm:ss}", evt.EventDate)',
+                            description: '@evt.Description'
+                        },
+            </text>
+        }
+                        ],
+                eventClick: function (info) {
+                    //Her burde man så kunne implementerer noget, hvor det kan klikke på de individuelle events i kalenderen for at fkomme ind på EventsCRUD/Details, men det er lave prio lige nu
+                }
+            });
+
+
+            calendar.render();
+
+        });
+
+    </script>
+</head>
+<body>
+    <div id='calendar'></div>
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

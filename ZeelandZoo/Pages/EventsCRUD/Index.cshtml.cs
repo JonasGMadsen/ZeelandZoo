@@ -22,14 +22,19 @@ namespace ZeelandZoo.Pages.EventsCRUD
             _context = context;
         }
 
-        public IList<Events> Events { get;set; } = default!;
+        public IList<Events> Events { get; set; } = new List<Events>();
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string searchString)
         {
-            if (_context.Events != null)
+            IQueryable<Events> eventsQuery = _context.Events;
+
+            if (!string.IsNullOrEmpty(searchString))
             {
-                Events = await _context.Events.ToListAsync();
+                eventsQuery = eventsQuery.Where(e => e.Name.Contains(searchString));
             }
+
+            Events = await eventsQuery.ToListAsync();
         }
     }
+    
 }

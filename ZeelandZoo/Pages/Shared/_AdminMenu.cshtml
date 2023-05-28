@@ -7,10 +7,17 @@
 @if (SignInManager.IsSignedIn(User) && await UserManager.IsInRoleAsync(UserManager.GetUserAsync(User).Result, "Admin"))
 {   
 <li class="nav-item dropdown show">
-    <a class="dropdown-toggle nav-link text-dark" href="#" data-toggle="dropdown">Admin</a>
+    <a class="dropdown-toggle nav-link text-dark" href="#" data-toggle="dropdown">
+            <img src="https://cdn.icon-icons.com/icons2/38/PNG/512/hammer_5015.png" style="width:20px;height:20px;" />
+        Admin</a>
     <div class="dropdown-menu">
-        <a class="dropdown-item"  href="EventsCRUD">Events</a>
-        <a class="dropdown-item" href="NewsCRUD">Nyheder</a>
+        <a class="dropdown-item"  href="EventsCRUD">
+                <img src="https://www.citypng.com/public/uploads/preview/outline-black-ticket-icon-png-11663777631weiruktfee.png" style="width:20px;height:20px;" />
+                Events
+            </a>
+        <a class="dropdown-item" href="NewsCRUD">
+                <img src="https://as1.ftcdn.net/v2/jpg/00/86/04/64/1000_F_86046478_rPox7JzkRkB5P5Ts9n6Qc1lcTyR4iOoQ.jpg" style="width:20px;height:20px;" />
+            Nyheder</a>
     </div>
   </li>
 }
