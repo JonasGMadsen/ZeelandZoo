@@ -1,20 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using ZeelandZoo.Models;
 
 namespace ZeelandZoo.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ZeelandZoo.Data.ApplicationDbContext _context;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(ZeelandZoo.Data.ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
-        {
+        public IList<News> News { get; set; } = new List<News>();
 
+        public async Task<IActionResult> OnGetAsync()
+        {
+            News = await _context.News.ToListAsync();
+            return Page();
         }
     }
 }

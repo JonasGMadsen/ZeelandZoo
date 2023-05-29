@@ -5,6 +5,84 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4" style="color: #CCCCCC">Velkommen til Zeeland Zoo!</h1>
 </div>
+
+
+<html>
+<head>
+    <title>News Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        Body {
+            background-image: url('https://scontent-cph2-1.xx.fbcdn.net/v/t39.30808-6/277817506_657052259000962_6144921249846798986_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_aid=0&_nc_ohc=fM7ArAYu0b4AX9A8G2H&_nc_ht=scontent-cph2-1.xx&oh=00_AfDR5DAYhNuuNJOoRLfEExLzQduy0MrxglhzXPULKUZAww&oe=6479F01A');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+        .news-card {
+            margin-bottom: 20px;
+
+        }
+
+        .news-card .card-body {
+                padding: 20px;
+                background-color: #CCD6EF;
+         }
+
+        .news-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .news-description {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .news-author {
+            font-size: 16px;
+            color: #888;
+        }
+
+        .news-date {
+            font-size: 16px;
+            color: #888;
+        }
+        .åbnings-tid{
+            font-size: 18px;
+            text-align: center;
+            padding-top: 40px;
+            padding-right: 295px;
+            white-space: nowrap;
+            color: #CCCCCC 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #FFFFFF">Zeeland Zoo News</h1>
+        <div class="row">
+            @foreach (var newsItem in Model.News)
+            {
+                <div class="col-lg-12">
+                    <div class="news-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title news-title">@newsItem.Title</h5>
+                                <p class="card-text news-author">@newsItem.Author</p>
+                                <pre class="card-text news-description">@newsItem.Description</pre>                              
+                                <p class="card-text news-date">Dato: @newsItem.NewsDate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="åbnings-tid">
+            <h3 class="åbnings-tid" style="color: #CCCCCC" >Åbningstider: Mandag til Fredag: 15:00  - 17:00  | Lørdag: 12:00 - 16:00</h3>
+        </div>
+
+    </div>
+</body>
+</html>

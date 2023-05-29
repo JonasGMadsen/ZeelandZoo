@@ -8,6 +8,7 @@
     <meta charset='utf-8' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales/da.js'></script>
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -19,6 +20,15 @@
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
+                buttonText: {
+                    today: 'I dag',
+                    month: 'Måned',
+                    week: 'Uge',
+                    day: 'Dag',
+                    prev: 'Forrige',
+                    next: 'Næste'
+                },
+                locale: 'da',
                 events: [
         @foreach (var evt in Model.Events)
         {
